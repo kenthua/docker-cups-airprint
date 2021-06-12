@@ -1,5 +1,5 @@
 # base image
-FROM ubuntu:xenial
+FROM debian:slim
 
 # label with HEAD commit if given
 ARG GIT_COMMIT=unspecified
@@ -7,17 +7,15 @@ LABEL git_commit=$GIT_COMMIT
 
 # Install the packages we need. Avahi will be included
 RUN apt-get update && apt-get install -y \
+        printer-driver-brlaser \
 	cups \
 	cups-pdf \
   	cups-bsd \
   	cups-filters \
-	hplip \
 	inotify-tools \
 	foomatic-db-compressed-ppds \
 	printer-driver-all \
 	openprinting-ppds \
-	hpijs-ppds \
-	hp-ppd \
 	python-cups \
 	cups-backend-bjnp \
 && rm -rf /var/lib/apt/lists/*
