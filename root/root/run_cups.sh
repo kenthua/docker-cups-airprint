@@ -16,5 +16,7 @@ if [ ! -f /config/printers.conf ]; then
 fi
 cp /config/printers.conf /etc/cups/printers.conf
 
+chmod -R 777 /etc/cups
+
 /root/printer-update.sh &
 exec /usr/sbin/cupsd -f
